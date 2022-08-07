@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Portfolio</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="https://kit.fontawesome.com/f59ff044d3.js" crossorigin="anonymous"></script>
+  <style>
+
+/* universal selector */
+* {
+  outline: none;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar  */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(93, 18, 18);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Custom Scrollbar END */
+
+/* Styles for background */
+body::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.45) 100%
+  );
+  /* -webkit-backdrop-filter: saturate(3); */
+  /* backdrop-filter: saturate(3); */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-image: url(https://imgs.search.brave.com/Mlg9w-IriKk8MElpihCAOlTrTYLYWt50PAFH7mnu3oc/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5M/R2tfY204ZkhkaUZv/TmV0TVV4cDdRSGFF/SyZwaWQ9QXBp);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    padding: 0.8em;
+  }
+}
+
+main {
+  background-color: rgba(198, 19, 205, 0.162);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 1250px;
+  width: 100%;
+  border-radius: 5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(20px);
+  font-weight: 500;
+  padding: 1rem 1rem 2rem 1rem;
+  overflow: auto;
+}
+
+main::-webkit-scrollbar {
+  display: none;
+}
+
+/* navbar styles */
+.navBar {
+  display: flex;
+  font-style: italic;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1.5px solid rgb(255 255 255 / 35%);
+}
+
+.navBar > h1,
+.navBar > navigationMenu {
+  margin: 10px;
+}
+
+.navigationMenu > a {
+  padding: 5px 10px;
+  margin-left: 10px;
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+}
+
+.navigationMenu > a:hover {
+  transition: ease-in-out 300ms;
+  background: white;
+}
+
+@media only screen and (max-width: 760px) {
+  .navigationMenu {
+    display: none;
+  }
+}
+/* navbar styles end */
+
+/* Hero section styles */
+.heroSection {
+  margin: 2rem 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.profileImage {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+}
+
+.herosectionDetails {
+  text-align: center;
+}
+
+.herosectionDetails > h1 {
+  font-size: 50px;
+  margin: 10px;
+}
+
+/* Hero section styles end */
+
+/* about me styles */
+.aboutMe {
+  margin: 1rem;
+  text-align: center;
+}
+/* about me styles end */
+
+.skillsAndProjects {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: [one] 50% [two] 50%;
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 2rem);
+}
+
+@media only screen and (max-width: 720px) {
+  .skillsAndProjects {
+    grid-template-columns: [one] 100%;
+    grid-template-rows: [one] [two];
+  }
+}
+
+.skillsAndProjects > .skills,
+.skillsAndProjects > .projects {
+  min-width: 250px;
+  margin: 1rem;
+  min-height: 250px;
+}
+
+.skillsAndProjects > .skills,
+.skillsAndProjects > .projects {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-color: rgba(255, 255, 255, 0.21);
+  border: 1px solid rgb(255 255 255 / 31%);
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cardHeading {
+  display: block;
+  width: 90%;
+  /* text-align: center; */
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.skillsAndProjects > .skills > img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+
+.skillsAndProjects > .skills > img:hover {
+  transition: ease-in 300ms;
+  transform: scale(0.85);
+  cursor: pointer;
+}
+
+.projectContainer {
+  display: flex;
+  width: 90%;
+}
+
+.projectContainer > img {
+  width: 60px;
+  height: 60px;
+  padding-right: 10px;
+  border-radius: 50px;
+}
+
+.projectContainer > .projectDescription > h4 {
+  margin: 0;
+}
+
+.projectContainer > .projectDescription > p {
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.contactForm {
+  margin: 2rem;
+  width: calc(100% - 4rem);
+  background-color: rgb(255 255 255 / 31%);
+  border: 1px solid rgb(255 255 255 / 31%);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.contactForm > .formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroup > input,
+.formGroup > textarea {
+  width: 100%;
+  padding: 5px 10px;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.submitButton {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+@media only screen and (max-width: 460px) {
+  .profileImage {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+  }
+
+  .herosectionDetails > h1 {
+    font-size: 30px;
+    margin-top: 1.5rem;
+    margin-bottom: 0rem;
+  }
+
+  .herosectionDetails > h3 {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 400;
+  }
+  .fa-linkedin {
+    margin-left: 5px;
+  }
+
+  .fa-github {
+    margin-left: 7px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <main class='main'>
+    <nav class='navBar'>
+      <h1>Samarth Garg's Portfolio</h1>
+      <div class='navigationMenu'>
+        <a href='#aboutMe'>About Me</a>
+        <a href='#skills'>Skills</a>
+        <a href='#projects'>Projects</a>
+        <a href='#contactForm'>Let's Connect!</a>
+        <div>
+    </nav>
+    <section class='heroSection'>
+      <img class='profileImage' src='/Images/my photo.jpg' />
+      <div class='herosectionDetails'>
+
+        <h1>I'm a Developer and an Explorer</h1>
+        <h3>I Like to try and test new tech...</h3>
+
+      </div>
+    </section>
+    <section class='aboutMe' id='aboutMe'>
+      <h1>What I Do...</h1>
+      <p>Hey Folks! <br>
+        Presently I am persuing My B.Tech From Medi-Caps University.
+        I am a Second Year CSE Student(2021-2025).I always try to explore more whether it's in tech or just my life to get more.
+        I follow Photography and Editing Content, Chess and A bit of Music as my hobbies.<br>
+        I learned C and Front end Development during My First Year and currently working to create comfortable enviorment in Back end Development and DSA.
+      </p>
+    </section>
+    <section class='skillsAndProjects'>
+      <div class='skills' id='skills'>
+        <h1 class='cardHeading'>Skills</h1>
+
+        <img title='C' src='./Images/C.svg'>
+        <img title='CPP' src='./Images/CPP.svg'>
+        <img title='HTML' src='./Images/HTML.svg'>
+        <img title='CSS' src='./Images/CSS.svg'>
+        <img title='JS' src='./Images/JS.svg'>
+        <img title='Mongo DB' src='./Images/MONGO DB.svg'>
+
+      </div>
+      <div class='projects' id='projects'>
+        <h1 class='cardHeading'>Projects</h1>
+        
+        <div class='projectContainer'>
+          <img src='./Images/agrorise.jpeg' />
+          <div class='projectDescription'>
+            <h4>Agro-Rise</h4>
+            <p>I Created this project while working in a Group for our collage Hackathon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class='contactForm' id='contactForm'>
+      <h1>Let's Connect! <a href="https://www.linkedin.com/in/khushi-sharma-74a218224"><i
+            class="fa-brands fa-linkedin fa-2x"></i></a>
+
+        <a href="https://github.com/Khushisharma23"><i class="fa-brands fa-github fa-2x"></i></a>
+      </h1>
+      <div class='formGroup'>
+        <label for='name'>Enter Full Name</label><br />
+        <input type='text' id='name' placeholder='Full Name' />
+      </div>
+      <div class='formGroup'>
+        <label for='email'>Email</label><br />
+        <input type='text' id='email' placeholder='Email' />
+      </div>
+      <div class='formGroup'>
+        <label for='message'>Message</label><br />
+        <textarea placeholder="Send some message!" id="message" name="w3review" rows="4" cols="50"></textarea>
+      </div>
+      <button class='submitButton' onClick={submit()}>Connect</button>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>
